@@ -13,10 +13,15 @@ export const Navbar = () => {
         </Link>
       </div>
       <div className="links">
+        <Link to="/"> HOME </Link>
+        <Link to="/"> ABOUT </Link>
+        <Link to="/"> CONTACT </Link>
         <Link to="/"> SHOP </Link>
         <Link to="/cart">
           <ShoppingCart size={32} />
         </Link>
+        <Link to="/"> LOGIN </Link>
+        <Link to="/"> SIGN UP </Link>
       </div>
     </div>
   );
