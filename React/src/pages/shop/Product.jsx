@@ -6,7 +6,7 @@ const Product = (props) => {
   const { addToCart, cartItems } = useContext(ShopContext);
   const cartItemAmount = cartItems[id];
   return (
-    <div className="product">
+    <div className="product" key={id} id={id}>
       <img src={productImage} alt="imageLogo" />
       <div className="description">
         <p>
