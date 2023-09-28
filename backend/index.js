@@ -9,6 +9,7 @@ const hostname = "localhost";
 
 const db = "react_ecom";
 const tbl = "user_login";
+const tbl1 = "products";
 
 app.use(cors());
 
@@ -41,6 +42,18 @@ app.get("/login", (req, res) => {
   res.status(200);
   res.setHeader("Content-Type", "application/json");
   connection.query("SELECT * from " + tbl, function (err, result) {
+    if (err) throw err;
+    //console.log("Result: " + JSON.stringify(result));
+    res.end(JSON.stringify(result));
+  });
+});
+
+// For Products
+app.get("/products", (req, res) => {
+  // Display all data
+  res.status(200);
+  res.setHeader("Content-Type", "application/json");
+  connection.query("SELECT * from " + tbl1, function (err, result) {
     if (err) throw err;
     //console.log("Result: " + JSON.stringify(result));
     res.end(JSON.stringify(result));

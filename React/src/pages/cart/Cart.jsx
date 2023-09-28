@@ -13,7 +13,7 @@ export const Cart = () => {
   return (
     <div className="cart">
       <div>
-        <h1> your cart items </h1>
+        <h1> Your Cart Items </h1>
       </div>
       <div className="cart-page">
         <div className="cartItems">
@@ -49,7 +49,7 @@ export const Cart = () => {
             </>
           ) : (
             <>
-              <h1>your cart is empty</h1>
+              <h1>Your Cart is Empty</h1>
               <button className="shopping-button" onClick={() => navigate("/")}>
                 SHOP NOW
               </button>

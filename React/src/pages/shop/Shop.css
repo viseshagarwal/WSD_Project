@@ -18,7 +18,8 @@
 }
 
 .product {
-  flex-basis: calc(40% - 40px);
+  
+  flex-basis: calc(30% - 40px);
   display: flex;
   flex-direction: column;
   align-items: center;
