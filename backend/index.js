@@ -123,11 +123,18 @@ app.post("/checkout", (req, res) => {
         res.status(500).send("Error inserting into the database");
       } else {
         console.log("Order placed successfully.");
+        console.log(results.insertId);
         res.status(200).json({ message: "Order placed successfully." });
       }
     }
   );
+  connection.query(
+    "INSERT INTO orders_details (order_id,  qty, product_id, user_id) VALUES (?, ?, ?,?)",
+    [results.insertId, 5, 10],
+    (error, results) => {}
+  );
 });
+
 // app.post('/update', (req,res) => {
 //     res.status(200)
 //     res.setHeader('Content-Type', 'application/json')
