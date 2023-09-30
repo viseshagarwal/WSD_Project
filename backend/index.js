@@ -90,6 +90,44 @@ app.post("/signup", (req, res) => {
   );
 });
 
+// app.post("/checkout", (req, res) => {
+//   res.status(200);
+//   res.setHeader("Content-Type", "application/json");
+//   console.log(req.body);
+//   var resp = req.body;
+//   console.log(resp["user_id"]);
+//   console.log(resp["totalAmount"]);
+//   // Make a connection to the database
+//   connection.query(
+//     "INSERT into orders (user_id, amt) VALUES (" +
+//       resp["user_id"] +
+//       "," +
+//       resp["totalAmount"] +
+//       ")"
+//   );
+// });
+
+app.post("/checkout", (req, res) => {
+  //console.log(req.body);
+  const resp = req.body;
+  //console.log(resp["user_id"]);
+  //console.log(resp["totalAmount"]);
+
+  // Make a connection to the database
+  connection.query(
+    "INSERT INTO orders (user_id, amt) VALUES (?, ?)",
+    [resp["user_id"], resp["totalAmount"]],
+    (error, results) => {
+      if (error) {
+        console.error("Error inserting into the database:", error);
+        res.status(500).send("Error inserting into the database");
+      } else {
+        console.log("Order placed successfully.");
+        res.status(200).json({ message: "Order placed successfully." });
+      }
+    }
+  );
+});
 // app.post('/update', (req,res) => {
 //     res.status(200)
 //     res.setHeader('Content-Type', 'application/json')

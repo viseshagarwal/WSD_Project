@@ -2,7 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { ShoppingCart, SignOut, SignIn, User } from "phosphor-react";
 import "./Navbar.css";
-import logo from "../assets/logo.png";
+//import logo from "../assets/logo.png";
+import logo from "../assets/Victoria's Fragrance-logos/new_logo_transparent.png";
 import Cookies from "js-cookie";
 
 export const Navbar = () => {

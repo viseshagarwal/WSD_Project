@@ -36,6 +36,12 @@ export const ShopContextProvider = (props) => {
     return totalAmount;
   };
 
+  const emptyCart = () => {
+    setCartItems({});
+
+    console.log(cartItems);
+  };
+
   const addToCart = (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
   };
@@ -51,6 +57,7 @@ export const ShopContextProvider = (props) => {
     removeFromCart,
     updateCartItemCount,
     getTotalCartAmount,
+    emptyCart,
   };
 
   return (

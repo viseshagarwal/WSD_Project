@@ -17,10 +17,12 @@ const About = () => {
         <h1>About</h1>
       </div>
       <div className="aboutContent">
-        <p>
-          This is a simple e-commerce website that sells products. It is built
-          using React, Node.js, and MongoDB. The website is hosted on Heroku.
-        </p>
+        <center>
+          <p>
+            This is a simple e-commerce website that sells products. It is built
+            using React, Node.js, and MongoDB. The website is hosted on Heroku.
+          </p>
+        </center>
       </div>
     </div>
   );

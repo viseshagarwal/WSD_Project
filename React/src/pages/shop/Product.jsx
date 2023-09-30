@@ -9,6 +9,7 @@ const Product = (props) => {
     <div className="product" key={id} id={id}>
       <img
         src={process.env.PUBLIC_URL + "/assets/" + productImage}
+        //src={productImage}
         alt="imageLogo"
       />
       <div className="description">

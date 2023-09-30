@@ -30,20 +30,15 @@
   display: flex;
   align-items: center;
   transition: all 0.2s ease-out;
-  padding:10px;
+  padding: 10px;
   border-radius: 8px;
   gap: 20px;
-  width:800px;
-
-
+  width: 800px;
 }
 
 .cartItem:hover {
-  background-color:  #fff7fd;
+  background-color: #fff7fd;
 }
-
-
-
 
 .cartItem .description {
   flex: 1;
@@ -64,9 +59,7 @@
   align-items: center;
   border-radius: 5px;
   border: 1px solid #000000;
-
 }
-
 
 .cartItem .countHandler button {
   font-size: large;
@@ -76,11 +69,10 @@
   padding: 6px 12px;
   transition: all 0.2s ease-out;
   border-radius: 5px;
-
 }
 
 .cartItem .countHandler button:hover {
-  color: #c782bc
+  color: #c782bc;
 }
 
 .cartItem .countHandler input {
@@ -109,7 +101,6 @@
 }
 
 button {
-
   cursor: pointer;
   transition: background-color 0.5s;
 }
@@ -140,7 +131,8 @@ button:hover {
 
 .cart-page {
   display: flex;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
   gap: 10px;
-justify-content: flex-end;
+  justify-content: flex-end;
 }

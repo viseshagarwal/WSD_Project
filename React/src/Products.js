@@ -57,6 +57,4 @@ export const Products = [
     productImage: product8,
   },
 ];
-// Mongodb username: visesh
-// Mongodb password: 33fuefTL4XeMX8sU
 export default Products;
