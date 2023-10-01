@@ -7,7 +7,7 @@
     justify-content: flex-end; 
     align-items: center;
     background-color: #131320; 
-    padding: 0px;
+    padding: 10px;
     height: 120px;
     color: #fff; 
     position: fixed;
@@ -18,12 +18,12 @@
   }
   
   .logo {
-  margin-right: auto;
+  margin-left: auto;
   }
   
   .logo img {
-    height: 80%; 
-   width: 80%; 
+    height: 55%; 
+   width: 55%; 
    
    
   }

@@ -7,7 +7,11 @@ const Product = (props) => {
   const cartItemAmount = cartItems[id];
   return (
     <div className="product" key={id} id={id}>
-      <img src={productImage} alt="imageLogo" />
+      <img
+        src={process.env.PUBLIC_URL + "/assets/" + productImage}
+        //src={productImage}
+        alt="imageLogo"
+      />
       <div className="description">
         <p>
           <b>{productName}</b>

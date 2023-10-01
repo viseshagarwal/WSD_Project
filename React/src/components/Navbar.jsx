@@ -2,7 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { ShoppingCart, SignOut, SignIn, User } from "phosphor-react";
 import "./Navbar.css";
-import logo from "../assets/logo.png";
+//import logo from "../assets/logo.png";
+import logo from "../assets/Victoria's Fragrance-logos/new_logo_transparent.png";
 import Cookies from "js-cookie";
 
 export const Navbar = () => {
@@ -19,7 +20,6 @@ export const Navbar = () => {
         <Link to="/">HOME</Link>
         <Link to="/About"> ABOUT </Link>
         <Link to="/Contact"> CONTACT </Link>
-        <Link to="/Shop"> SHOP </Link>
         <Link to="/cart">
           <ShoppingCart size={32} />
         </Link>
