@@ -20,6 +20,7 @@ export const Cart = () => {
     const updateProduct = new Promise(async (resolve, reject) => {
       const updateCart = await axios.post("http://localhost:3002/checkout", {
         user_id,
+        cartItems,
         totalAmount,
       });
       if (updateCart.data.message) {
@@ -30,15 +31,15 @@ export const Cart = () => {
         reject(false);
       }
     });
-
-    if (updateProduct) return console.log("Successs");
+    alert("Order Placed Successfully");
+    navigate("/");
+    //if (updateProduct) return console.log("Successs");
 
     return console.log("Failed");
     //empty the cart
     // setCartItems({});
 
     // navigate to the home page
-    //navigate("/");
   };
   return (
     <div className="cart">
@@ -55,9 +56,9 @@ export const Cart = () => {
           }
           )
           } */}
-          {
-            !totalAmount ? <div></div>
-            : (
+          {!totalAmount ? (
+            <div></div>
+          ) : (
             Products.map((product) => {
               if (cartItems[product.id] !== 0) {
                 return <CartItem data={product} />;

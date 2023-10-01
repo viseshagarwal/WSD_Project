@@ -9,7 +9,7 @@ import Signup from "./signup/signup";
 import Error from "./login/error404";
 import About from "./static_pages/about";
 import Contact from "./static_pages/contact";
-
+import Orders from "./orders/orders";
 import { ShopContextProvider } from "./context/ShopContext";
 function App() {
   return (
@@ -25,6 +25,7 @@ function App() {
             <Route path="/Logout" element={<Logout />} />
             <Route path="/About" element={<About />} />
             <Route path="/Contact" element={<Contact />} />
+            <Route path="/Orders" element={<Orders />} />
             <Route path="*" element={<Error />} />
           </Routes>
         </Router>

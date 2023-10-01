@@ -16,6 +16,9 @@ app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+//const express = require("express");
+const cookieParser = require("cookie-parser");
+
 var corsOptions = {
   origin: "*",
   methods: "GET",
@@ -65,7 +68,7 @@ app.post("/signup", (req, res) => {
   res.setHeader("Content-Type", "application/json");
   // console.log(req.body)
   var resp = req.body;
-  console.log(resp["id"]);
+  //console.log(resp["id"]);
   connection.query(
     "INSERT into " +
       tbl +
@@ -107,33 +110,104 @@ app.post("/signup", (req, res) => {
 //   );
 // });
 
-app.post("/checkout", (req, res) => {
-  //console.log(req.body);
-  const resp = req.body;
-  //console.log(resp["user_id"]);
-  //console.log(resp["totalAmount"]);
+// app.post("/checkout", (req, res) => {
+//   //console.log(req.body);
+//   const resp = req.body;
 
-  // Make a connection to the database
+//   // Make a connection to the database
+//   connection.query(
+//     "INSERT INTO orders (user_id, amt) VALUES (?, ?)",
+//     [resp["user_id"], resp["totalAmount"]],
+//     (error, results) => {
+//       if (error) {
+//         console.error("Error inserting into the database:", error);
+//         res.status(500).send("Error inserting into the database");
+//       } else {
+//         console.log("Order placed successfully.");
+//         orderId = results.insertId;
+//         //console.log(orderId);
+//         res.status(200).json({ message: "Order placed successfully." });
+//       }
+//     }
+//   );
+
+//   console.log("the order id is", orderId);
+
+//   const cartItems = resp.cartItems;
+//   for (const itemID in cartItems) {
+//     const quantity = cartItems[itemID];
+//     console.log("the order id isdcd  ", orderId);
+//     if (quantity > 0) {
+//       //console.log(quantity, itemID, resp["user_id"]);
+//       // Insert data for items with non-zero quantity
+//       // connection.query(
+//       //   "INSERT INTO orders_details (order_id,  qty, product_id, user_id) VALUES (?, ?, ?, ?)",
+//       //   [results.insertId, quantity, itemID, resp["user_id"]],
+//       //   (error) => {
+//       //     if (error) {
+//       //       console.error("Error inserting into the database:", error);
+//       //     } else {
+//       //       console.log("Data inserted successfully.");
+//       //     }
+//       //   }
+//       // );
+//     }
+//   }
+// });
+
+app.post("/checkout", (req, res) => {
+  const resp = req.body;
+
+  // Insert the order
   connection.query(
     "INSERT INTO orders (user_id, amt) VALUES (?, ?)",
-    [resp["user_id"], resp["totalAmount"]],
+    [resp.user_id, resp.totalAmount],
     (error, results) => {
       if (error) {
         console.error("Error inserting into the database:", error);
         res.status(500).send("Error inserting into the database");
       } else {
         console.log("Order placed successfully.");
-        console.log(results.insertId);
+        const orderId = results.insertId;
+
+        // Access cartItems from resp
+        const cartItems = resp.cartItems;
+
+        // Iterate through the object keys
+        for (const itemID in cartItems) {
+          const quantity = cartItems[itemID];
+
+          if (quantity > 0) {
+            console.log("Order ID:", orderId);
+            console.log("Item ID:", itemID);
+            console.log("Quantity:", quantity);
+
+            // Insert data for items with non-zero quantity
+            connection.query(
+              "INSERT INTO order_details (order_id,  qty, product_id, user_id) VALUES (?, ?, ?,?)",
+              [orderId, quantity, itemID, resp["user_id"]],
+              (error) => {
+                if (error) {
+                  console.error("Error inserting into the database:", error);
+                } else {
+                  console.log("Data inserted successfully.");
+                }
+              }
+            );
+          }
+        }
+
         res.status(200).json({ message: "Order placed successfully." });
       }
     }
   );
-  connection.query(
-    "INSERT INTO orders_details (order_id,  qty, product_id, user_id) VALUES (?, ?, ?,?)",
-    [results.insertId, 5, 10],
-    (error, results) => {}
-  );
 });
+
+// connection.query(
+//   "INSERT INTO orders_details (order_id,  qty, product_id, user_id) VALUES (?, ?, ?,?)",
+//   [results.insertId, 5, 10,resp["user_id"]],
+//   (error, results) => {}
+// );
 
 // app.post('/update', (req,res) => {
 //     res.status(200)
@@ -171,6 +245,27 @@ app.post("/checkout", (req, res) => {
 //         res.end(JSON.stringify(result))
 //     });
 // })
+
+//app.use(bodyParser.json());
+app.get("/Orders", (req, res) => {
+  const receivedVariable = req.query.variableName;
+  //res.json({ receivedVariable });
+  //console.log(receivedVariable);
+  // Display all data
+  res.status(200);
+  res.setHeader("Content-Type", "application/json");
+  //console.log(req.body.user_id);
+  connection.query(
+    // "SELECT orders.order_id, orders.amt, order_details.order_time, products.productName, products.price FROM user_login INNER JOIN (products INNER JOIN (orders INNER JOIN order_details ON orders.order_id = order_details.order_id) ON products.ID = order_details.product_id) ON user_login.ID = orders.user_id where user_login.id= " +
+    "SELECT orders.order_id, user_login.ID, orders.amt, order_details.order_time, products.productName, products.price, products.productImage FROM user_login INNER JOIN (products INNER JOIN (orders INNER JOIN order_details ON orders.order_id = order_details.order_id) ON products.ID = order_details.product_id) ON user_login.ID = orders.user_id where user_login.id= " +
+      receivedVariable,
+    function (err, result) {
+      if (err) throw err;
+      //console.log("Result: " + JSON.stringify(result));
+      res.end(JSON.stringify(result));
+    }
+  );
+});
 
 app.get("/*", (req, res) => {
   res.status(404);
