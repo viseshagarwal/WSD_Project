@@ -22,9 +22,29 @@ const Shop = () => {
 
   return (
     <div className="shop" key="shop">
-      <div className="shopTitle" key="shopTitle">
-        <h1>Shop</h1>
+      {/* <div className="shopTitle" key="shopTitle">
+        <h2>Shop</h2>
+        <button id="seach" type="button">HJ</button>
+      </div> */}
+      <div id="inter">
+        <nav class="navbar mt-3 mb-3">
+          <div class="container-fluid">
+            <a class="navbar-brand">Shop Now</a>
+            <form class="d-flex" role="search">
+              <input
+                class="form-control me-2"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+              />
+              <button class="btn btn-outline-success" type="submit">
+                Search
+              </button>
+            </form>
+          </div>
+        </nav>
       </div>
+
       <div className="products" key="products">
         {products.map((product, index) => (
           <Product data={product} />

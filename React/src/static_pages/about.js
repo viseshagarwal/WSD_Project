@@ -8,21 +8,120 @@ const About = () => {
       <br />
       <br />
       <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <div className="aboutTitle">
-        <h1>About</h1>
+      <div class="feature-bg">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-7">
+              <div class="featured-text">
+                <br />
+                <br />
+                <h2 class="pb-3">
+                  Why <span class="orange-text">Victoria's Frangrance</span>
+                </h2>
+                <div class="row">
+                  <div class="col-lg-6 col-md-6 mb-4 mb-md-5">
+                    <div class="list-box d-flex">
+                      <div class="list-icon">
+                        <i class="fas fa-shipping-fast"></i>
+                      </div>
+                      <div class="content">
+                        <h3>Home Delivery</h3>
+                        <p>
+                          Enjoy the convenience of home delivery when you shop
+                          with us. We'll ensure your orders are delivered right
+                          to your doorstep, so you can relax and await your
+                          favorite fragrances.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-6 col-md-6 mb-5 mb-md-5">
+                    <div class="list-box d-flex">
+                      <div class="list-icon">
+                        <i class="fas fa-money-bill-alt"></i>
+                      </div>
+                      <div class="content">
+                        <h3>Best Price</h3>
+                        <p>
+                          At Victoria's Fragrance, we believe in offering our
+                          products at the most competitive prices in the market.
+                          You can shop with confidence, knowing you're getting
+                          the best value for your money.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-6 col-md-6 mb-5 mb-md-5">
+                    <div class="list-box d-flex">
+                      <div class="list-icon">
+                        <i class="fas fa-briefcase"></i>
+                      </div>
+                      <div class="content">
+                        <h3>Custom Box</h3>
+                        <p>
+                          We understand that everyone has unique preferences.
+                          That's why we offer custom packaging options, allowing
+                          you to personalize your fragrance boxes to suit your
+                          style and taste.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-6 col-md-6">
+                    <div class="list-box d-flex">
+                      <div class="list-icon">
+                        <i class="fas fa-sync-alt"></i>
+                      </div>
+                      <div class="content">
+                        <h3>Quick Refund</h3>
+                        <p>
+                          Your satisfaction is our top priority. If, for any
+                          reason, you're not completely satisfied with your
+                          purchase, our quick refund process ensures that you'll
+                          receive your money back.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div className="aboutContent">
-        <center>
-          <p>
-            This is a simple e-commerce website that sells products. It is built
-            using React, Node.js, and MongoDB. The website is hosted on Heroku.
-          </p>
-        </center>
+      <div class="mt-150">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+              <div class="section-title">
+                <br />
+                <br />
+                <h3>
+                  Our <span class="orange-text">Team</span>
+                </h3>
+                <p></p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg">
+              <div class="single-team-item">
+                <div class="team-bg team-bg-1"></div>
+                <h4>
+                  Visesh <span>Student</span>
+                </h4>
+              </div>
+            </div>
+            <div class="col-lg">
+              <div class="single-team-item">
+                <div class="team-bg team-bg-2"></div>
+                <h4>
+                  Keerthana <span>Student</span>
+                </h4>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -28,7 +28,6 @@ const Signup = () => {
   };
 
   return (
-    
     // <div>
     //   <h1>Signup Page</h1>
     //   <br />
@@ -97,18 +96,12 @@ const Signup = () => {
     // </div>
     <div>
       <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
+
       <section class="signup">
         <div class="container">
           <div class="signup-content">
             <div class="signup-form">
-              <h2 class="form-title">Sign up</h2>
+              <h2 style={{ color: "black !important" }}>Sign up</h2>
               <form method="POST" class="register-form" id="register-form">
                 <div class="form-group">
                   <label for="username">
