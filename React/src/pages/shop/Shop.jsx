@@ -36,6 +36,7 @@ const Shop = () => {
                 type="search"
                 placeholder="Search"
                 aria-label="Search"
+                id="searchInput"
               />
               <button class="btn btn-outline-success" type="submit">
                 Search
