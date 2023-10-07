@@ -39,11 +39,6 @@ const Login = () => {
   return (
     <div className="login">
       <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
       <div className="login-container">
         <div className="login-form">
           <br />

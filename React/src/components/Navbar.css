@@ -1,46 +1,43 @@
-*{
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+* {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 .navbar {
-    display: flex;
-    justify-content: flex-end; 
-    align-items: center;
-    background-color: #131320; 
-    padding: 10px;
-    height: 120px;
-    color: #fff; 
-    position: fixed;
-    top:0;
-    left:0;
-    width: 100%;
-    z-index: 1000;
-  }
-  
-  .logo {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: #4e2c3f;
+  padding: 10px;
+  color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.logo {
   margin-left: auto;
-  }
-  
-  .logo img {
-    height: 55%; 
-   width: 55%; 
-   
-   
-  }
-  
-  .links {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-  }
-  
-  .links a {
-    color: #ffffff;
-    text-decoration: none;
-    margin-right: 20px;
-  }
-  
-  .links a:hover {
-    color: #f9dbfc;
-  }
-  
+}
+
+.logo img {
+  height: 55%;
+  width: 55%;
+}
+
+.links {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.links a {
+  color: #ffffff;
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+.links a:hover {
+  color: #f9dbfc;
+}

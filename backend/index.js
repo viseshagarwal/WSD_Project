@@ -267,6 +267,33 @@ app.get("/Orders", (req, res) => {
   );
 });
 
+app.post("/contact", (req, res) => {
+  res.status(200);
+  res.setHeader("Content-Type", "application/json");
+  // console.log(req.body)
+  var resp = req.body;
+  //console.log(resp["id"]);
+  connection.query(
+    "INSERT into messages ( name,email, phone_no, subject, message ) VALUES ('" +
+      resp["name"] +
+      "','" +
+      resp["email"] +
+      "','" +
+      resp["phone_no"] +
+      "','" +
+      resp["subject"] +
+      "'," +
+      resp["message"] +
+      ",'" +
+      "')",
+    function (err, result) {
+      if (err) throw err;
+      console.log("Result: " + JSON.stringify(result));
+      res.end(JSON.stringify(result));
+    }
+  );
+});
+
 app.get("/*", (req, res) => {
   res.status(404);
   res.end("<h1>404 Error</h1>");
