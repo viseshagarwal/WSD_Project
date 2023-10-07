@@ -11,6 +11,10 @@ export const Cart = () => {
   const { cartItems, getTotalCartAmount, emptyCart } = useContext(ShopContext);
   const [totalAmount, setTotalAmount] = useState(getTotalCartAmount());
   const navigate = useNavigate();
+  const update = (data) => {
+    console.log("update", data);
+    setTotalAmount(data);
+  };
   const checkOut = async () => {
     // make a post request to backend to send the product id, quantity and user id from the cookies and then empty the cart
     console.log(cartItems);
@@ -61,7 +65,7 @@ export const Cart = () => {
           ) : (
             Products.map((product) => {
               if (cartItems[product.id] !== 0) {
-                return <CartItem data={product} />;
+                return <CartItem data={product} onChange={update} />;
               } else {
                 return null; // You can also use an empty <div> here if needed
               }
