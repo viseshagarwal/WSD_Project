@@ -4,11 +4,9 @@ import React from "react";
 const Contact = () => {
   return (
     <div className="contact">
-      <br />
-      <br />
-      <br />
       <div class="contact-from-section mt-150 mb-150">
         <div class="container">
+          <h1 style={{ color: "black", textAlign: "center" }}>Contact Us</h1>
           <div class="row">
             <div class="col-lg-8 mb-5 mb-lg-0">
               <br />

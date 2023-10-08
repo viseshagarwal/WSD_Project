@@ -5,9 +5,6 @@ import React from "react";
 const About = () => {
   return (
     <div className="about">
-      <br />
-      <br />
-      <br />
       <div class="feature-bg">
         <div class="container">
           <div class="row">
@@ -89,6 +86,7 @@ const About = () => {
           </div>
         </div>
       </div>
+      
       <div class="mt-150">
         <div class="container">
           <div class="row">
@@ -121,6 +119,9 @@ const About = () => {
               </div>
             </div>
           </div>
+          <br />
+          <br />
+          <br />
         </div>
       </div>
     </div>

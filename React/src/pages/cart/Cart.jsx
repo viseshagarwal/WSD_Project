@@ -61,6 +61,7 @@ export const Cart = () => {
       <div>
         <h1> Your Cart Items </h1>
       </div>
+      <br />
       <div className="cart-page">
         <div className="cartItems">
           {/* {Products.map((product) => {

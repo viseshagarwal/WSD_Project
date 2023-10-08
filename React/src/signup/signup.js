@@ -198,7 +198,6 @@ const Signup = () => {
                     onChange={(e) => setAddress(e.target.value)}
                   ></textarea>
                 </div>
-
                 <div class="form-group">
                   <input
                     type="checkbox"

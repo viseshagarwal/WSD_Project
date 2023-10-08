@@ -28,7 +28,7 @@ const Orders = () => {
 
   return (
     <div>
-      <h2>Orders</h2>
+      {/* <h2>Orders</h2>
       <div className="orders-container">
         {orders.map((order) => (
           <div key={order.order_id} className="order-card">
@@ -36,9 +36,35 @@ const Orders = () => {
             <p>productName: {order.productName}</p>
             <p> order time: {order.order_time}</p>
             <p>price : {order.price}</p>
-            {/* Add more details as needed */}
+           
           </div>
         ))}
+      </div> */}
+      <div class="feature">
+        <div class="container">
+          <div class="card">
+            <br />
+            <h1 class="card-header">Orders</h1>
+            <div class="card-body">
+              {orders.map((order) => (
+                <div key={order.order_id} className="order-card">
+                  <h3>Order ID: {order.order_id} </h3>
+                  <h5>Name: {order.productName}</h5>
+                  <img
+                    src={
+                      process.env.PUBLIC_URL + "/assets/" + order.productImage
+                    }
+                    style={{ height: "200px" }}
+                    alt="productImage"
+                  />
+                  <p> order time: {order.order_time}</p>
+                  <p>price : {order.price}</p>
+                  <hr style={{ textAlign: "left", marginLeft: "0" }} />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
