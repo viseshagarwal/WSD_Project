@@ -102,6 +102,7 @@ const Signup = () => {
           <div class="signup-content">
             <div class="signup-form">
               <h2 style={{ color: "black !important" }}>Sign up</h2>
+              <br />
               <form method="POST" class="register-form" id="register-form">
                 <div class="form-group">
                   <label for="username">
@@ -191,6 +192,7 @@ const Signup = () => {
                     type="text"
                     id="address"
                     placeholder="Address"
+                    style={{ height: "80px", width: "275px" }}
                     required
                     value={address}
                     onChange={(e) => setAddress(e.target.value)}

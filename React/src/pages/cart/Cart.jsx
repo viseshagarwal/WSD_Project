@@ -18,32 +18,43 @@ export const Cart = () => {
   const checkOut = async () => {
     // make a post request to backend to send the product id, quantity and user id from the cookies and then empty the cart
     console.log(cartItems);
-    let user_id = Cookies.get("id");
-    console.log(user_id);
+    if (Cookies.get("id") == 0 || Cookies.get("id") == "undefined") {
+      alert("Please Login to place order");
+      navigate("/login");
+    } else {
+      let user_id = Cookies.get("id");
+      console.log(user_id);
+      if (window.confirm("Do you want to place an order?") == true) {
+        const updateProduct = new Promise(async (resolve, reject) => {
+          const updateCart = await axios.post(
+            "http://localhost:3002/checkout",
+            {
+              user_id,
+              cartItems,
+              totalAmount,
+            }
+          );
+          if (updateCart.data.message) {
+            resolve(true);
+            emptyCart();
+            setTotalAmount(0);
+          } else {
+            reject(false);
+          }
+        });
+        alert("Order Placed Successfully");
+        navigate("/");
+        //if (updateProduct) return console.log("Successs");
 
-    const updateProduct = new Promise(async (resolve, reject) => {
-      const updateCart = await axios.post("http://localhost:3002/checkout", {
-        user_id,
-        cartItems,
-        totalAmount,
-      });
-      if (updateCart.data.message) {
-        resolve(true);
-        emptyCart();
-        setTotalAmount(0);
+        return console.log("Failed");
+        //empty the cart
+        // setCartItems({});
+
+        // navigate to the home page
       } else {
-        reject(false);
+        alert("Order Cancelled");
       }
-    });
-    alert("Order Placed Successfully");
-    navigate("/");
-    //if (updateProduct) return console.log("Successs");
-
-    return console.log("Failed");
-    //empty the cart
-    // setCartItems({});
-
-    // navigate to the home page
+    }
   };
   return (
     <div className="cart">
@@ -75,7 +86,7 @@ export const Cart = () => {
         <div className="checkout">
           {totalAmount > 0 ? (
             <>
-              <p className="subtotal">Subtotal: ${totalAmount}</p>
+              <p className="subtotal">Subtotal: ₹ {totalAmount}.00</p>
               <div className="checkout-buttons-container">
                 <button
                   className="shopping-button"
