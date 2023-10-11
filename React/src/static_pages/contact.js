@@ -1,7 +1,31 @@
 // Write for the Contact page
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 
 const Contact = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone_no, setPhone] = useState("");
+  const [subject, setSubject] = useState("");
+  const [message_text, setMessageText] = useState("");
+  //const [subject, setSignupStatus] = useState("");
+
+  const sendMessage = () => {
+    const message = { name, email, phone_no, subject, message_text };
+    console.log(message);
+    axios
+      .post("http://localhost:3002/contact", message)
+      .then((response) => {
+        //console.log("Response: ", response);
+        //console.log(response);
+        //setSignupStatus("Signup successful!");
+        //Cookies.set("id", response.data.insertId, { expires: 7 });
+        alert("Message Sent");
+        alert("We will contact within 24 hours");
+        //window.location.href = "/";
+      })
+      .catch((error) => console.error("Error saving data:", error));
+  };
   return (
     <div className="contact">
       <div class="contact-from-section mt-150 mb-150">
@@ -26,6 +50,8 @@ const Contact = () => {
                       placeholder="Name"
                       name="name"
                       id="name"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
                     />
                     <br />
                     <input
@@ -33,6 +59,8 @@ const Contact = () => {
                       placeholder="Email"
                       name="email"
                       id="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                     />
                   </p>
                   <br />
@@ -42,6 +70,8 @@ const Contact = () => {
                       placeholder="Phone"
                       name="phone"
                       id="phone"
+                      value={phone_no}
+                      onChange={(e) => setPhone(e.target.value)}
                     />
                     <br />
                     <input
@@ -49,6 +79,8 @@ const Contact = () => {
                       placeholder="Subject"
                       name="subject"
                       id="subject"
+                      value={subject}
+                      onChange={(e) => setSubject(e.target.value)}
                     />
                   </p>
                   <br />
@@ -59,13 +91,15 @@ const Contact = () => {
                       cols="30"
                       rows="10"
                       placeholder="Message"
+                      value={message_text}
+                      onChange={(e) => setMessageText(e.target.value)}
                     ></textarea>
                   </p>
                   <br />
                   <input type="hidden" name="token" value="FsWga4&@f6aw" />
                   <br />
                   <p>
-                    <input type="submit" value="Submit" />
+                    <input type="submit" value="Submit" onClick={sendMessage} />
                   </p>
                   <br />
                 </form>

@@ -272,9 +272,9 @@ app.post("/contact", (req, res) => {
   res.setHeader("Content-Type", "application/json");
   // console.log(req.body)
   var resp = req.body;
-  //console.log(resp["id"]);
+  console.log(resp);
   connection.query(
-    "INSERT into messages ( name,email, phone_no, subject, message ) VALUES ('" +
+    "INSERT into messages ( name,email, phone, subject, message ) VALUES ('" +
       resp["name"] +
       "','" +
       resp["email"] +
@@ -282,9 +282,8 @@ app.post("/contact", (req, res) => {
       resp["phone_no"] +
       "','" +
       resp["subject"] +
-      "'," +
-      resp["message"] +
-      ",'" +
+      "','" +
+      resp["message_text"] +
       "')",
     function (err, result) {
       if (err) throw err;
