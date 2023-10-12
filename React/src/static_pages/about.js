@@ -5,13 +5,51 @@ import React from "react";
 const About = () => {
   return (
     <div className="about">
+      <br />
+      <br />
+      <br />
+      <div class="container" style={{ boxSizing: "content-box !important" }}>
+        <div class="row">
+          <div class="col-lg-7">
+            <div class="featured-text">
+              <h2 class="pb-3">
+                About <span class="orange-text">Us</span>
+              </h2>
+              <div className="row">
+                <div class="content">
+                  <h3>About Victoria's Fragrances</h3>
+                  <p>
+                    Welcome to Victoria's Fragrances, where the art of perfumery
+                    meets a passion for enchanting scents. We are more than just
+                    a brand; we are a celebration of individuality, personal
+                    expression, and the pursuit of the perfect scent. Our
+                    commitment is to bring the world of fragrances to your
+                    doorstep, making each day a little more beautiful, a little
+                    more extraordinary.
+                  </p>
+                </div>
+              </div>
+              <br />
+              <hr></hr>
+              <br />
+              <div className="row">
+                <div class="content">
+                  <h3>Elevate Your Senses with Victoria's Fragrances.</h3>
+                  <p>
+                    Explore our fragrances and experience the
+                    art of scent today.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="feature-bg">
         <div class="container">
           <div class="row">
             <div class="col-lg-7">
               <div class="featured-text">
-                <br />
-                <br />
                 <h2 class="pb-3">
                   Why <span class="orange-text">Victoria's Frangrance</span>
                 </h2>
@@ -86,7 +124,6 @@ const About = () => {
           </div>
         </div>
       </div>
-      
       <div class="mt-150">
         <div class="container">
           <div class="row">
