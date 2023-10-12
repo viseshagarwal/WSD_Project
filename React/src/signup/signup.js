@@ -117,7 +117,7 @@ const Signup = () => {
 
     // if all the conditions are valid, this means that the form is valid
 
-    alert("Form is valid");
+    //alert("Form is valid");
     return false;
   }
 

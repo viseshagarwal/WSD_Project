@@ -8,23 +8,67 @@ const Contact = () => {
   const [phone_no, setPhone] = useState("");
   const [subject, setSubject] = useState("");
   const [message_text, setMessageText] = useState("");
+  const [errors, setErrors] = useState({});
   //const [subject, setSignupStatus] = useState("");
+  const validateForm = () => {
+    const newErrors = {};
 
+    if (!name) {
+      newErrors.name = "Please enter your name.";
+    }
+
+    if (!email) {
+      newErrors.email = "Please enter your email.";
+    } else if (!/\S+@\S+\.\S+/.test(email)) {
+      newErrors.email = "Please enter a valid email address.";
+    }
+
+    if (!phone_no) {
+      newErrors.phone_no = "Please enter your phone number.";
+    }
+
+    if (!subject) {
+      newErrors.subject = "Please enter the subject.";
+    }
+
+    if (!message_text) {
+      newErrors.message_text = "Please enter your message.";
+    }
+
+    setErrors(newErrors);
+
+    // Return true if there are no errors
+    return Object.keys(newErrors).length === 0;
+  };
+
+  // const sendMessage = () => {
+  //   const message = { name, email, phone_no, subject, message_text };
+  //   console.log(message);
+  //   axios
+  //     .post("http://localhost:3002/contact", message)
+  //     .then((response) => {
+  //       //console.log("Response: ", response);
+  //       //console.log(response);
+  //       //setSignupStatus("Signup successful!");
+  //       //Cookies.set("id", response.data.insertId, { expires: 7 });
+  //       alert("Message Sent");
+  //       alert("We will contact within 24 hours");
+  //       //window.location.href = "/";
+  //     })
+  //     .catch((error) => console.error("Error saving data:", error));
+  // };
   const sendMessage = () => {
-    const message = { name, email, phone_no, subject, message_text };
-    console.log(message);
-    axios
-      .post("http://localhost:3002/contact", message)
-      .then((response) => {
-        //console.log("Response: ", response);
-        //console.log(response);
-        //setSignupStatus("Signup successful!");
-        //Cookies.set("id", response.data.insertId, { expires: 7 });
-        alert("Message Sent");
-        alert("We will contact within 24 hours");
-        //window.location.href = "/";
-      })
-      .catch((error) => console.error("Error saving data:", error));
+    if (validateForm()) {
+      const message = { name, email, phone_no, subject, message_text };
+      console.log(message);
+      axios
+        .post("http://localhost:3002/contact", message)
+        .then((response) => {
+          alert("Message Sent");
+          alert("We will contact within 24 hours");
+        })
+        .catch((error) => console.error("Error saving data:", error));
+    }
   };
   return (
     <div className="contact">
@@ -42,7 +86,7 @@ const Contact = () => {
                 <form
                   type="POST"
                   id="fruitkha-contact"
-                  onsubmit="return validateForm();"
+                  onSubmit={(e) => e.preventDefault()}
                 >
                   <p>
                     <input
@@ -53,6 +97,10 @@ const Contact = () => {
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                     />
+                    {errors.name && (
+                      <span style={{ color: "red" }}>{errors.name}</span>
+                    )}
+
                     <br />
                     <input
                       type="email"
@@ -62,6 +110,9 @@ const Contact = () => {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                     />
+                    {errors.email && (
+                      <span style={{ color: "red" }}>{errors.email}</span>
+                    )}
                   </p>
                   <br />
                   <p>
@@ -73,6 +124,9 @@ const Contact = () => {
                       value={phone_no}
                       onChange={(e) => setPhone(e.target.value)}
                     />
+                    {errors.phone_no && (
+                      <span style={{ color: "red" }}>{errors.phone_no}</span>
+                    )}
                     <br />
                     <input
                       type="text"
@@ -82,6 +136,9 @@ const Contact = () => {
                       value={subject}
                       onChange={(e) => setSubject(e.target.value)}
                     />
+                    {errors.subject && (
+                      <span style={{ color: "red" }}>{errors.subject}</span>
+                    )}
                   </p>
                   <br />
                   <p>
@@ -94,6 +151,11 @@ const Contact = () => {
                       value={message_text}
                       onChange={(e) => setMessageText(e.target.value)}
                     ></textarea>
+                    {errors.message_text && (
+                      <span style={{ color: "red" }}>
+                        {errors.message_text}
+                      </span>
+                    )}
                   </p>
                   <br />
                   <input type="hidden" name="token" value="FsWga4&@f6aw" />
