@@ -259,25 +259,51 @@ app.post("/checkout", (req, res) => {
 // })
 
 //app.use(bodyParser.json());
+
 app.get("/Orders", (req, res) => {
   const receivedVariable = req.query.variableName;
-  //res.json({ receivedVariable });
-  //console.log(receivedVariable);
-  // Display all data
-  res.status(200);
-  res.setHeader("Content-Type", "application/json");
-  //console.log(req.body.user_id);
-  connection.query(
-    // "SELECT orders.order_id, orders.amt, order_details.order_time, products.productName, products.price FROM user_login INNER JOIN (products INNER JOIN (orders INNER JOIN order_details ON orders.order_id = order_details.order_id) ON products.ID = order_details.product_id) ON user_login.ID = orders.user_id where user_login.id= " +
-    "SELECT orders.order_id, user_login.ID, orders.amt, order_details.order_time, products.productName, products.price, products.productImage FROM user_login INNER JOIN (products INNER JOIN (orders INNER JOIN order_details ON orders.order_id = order_details.order_id) ON products.ID = order_details.product_id) ON user_login.ID = orders.user_id where user_login.id= " +
-      receivedVariable,
-    function (err, result) {
-      if (err) throw err;
-      //console.log("Result: " + JSON.stringify(result));
-      res.end(JSON.stringify(result));
+
+  // Check if receivedVariable is defined and not empty
+  if (receivedVariable === undefined || receivedVariable === "") {
+    res.status(400).json({ error: "VariableName is required" });
+    return;
+  }
+
+  // Proceed with your SQL query using receivedVariable
+  // Ensure to properly sanitize and validate the input before using it in the query
+  // Also handle cases where receivedVariable is not valid according to your requirements
+
+  // Sample SQL query
+  const sqlQuery = "SELECT ... WHERE user_login.id = ?";
+  connection.query(sqlQuery, [receivedVariable], (err, result) => {
+    if (err) {
+      console.error("Error executing SQL query:", err);
+      res.status(500).json({ error: "Internal server error" });
+      return;
     }
-  );
+    res.status(200).json(result);
+  });
 });
+
+// app.get("/Orders", (req, res) => {
+//   const receivedVariable = req.query.variableName;
+//   //res.json({ receivedVariable });
+//   //console.log(receivedVariable);
+//   // Display all data
+//   res.status(200);
+//   res.setHeader("Content-Type", "application/json");
+//   //console.log(req.body.user_id);
+//   connection.query(
+//     // "SELECT orders.order_id, orders.amt, order_details.order_time, products.productName, products.price FROM user_login INNER JOIN (products INNER JOIN (orders INNER JOIN order_details ON orders.order_id = order_details.order_id) ON products.ID = order_details.product_id) ON user_login.ID = orders.user_id where user_login.id= " +
+//     "SELECT orders.order_id, user_login.ID, orders.amt, order_details.order_time, products.productName, products.price, products.productImage FROM user_login INNER JOIN (products INNER JOIN (orders INNER JOIN order_details ON orders.order_id = order_details.order_id) ON products.ID = order_details.product_id) ON user_login.ID = orders.user_id where user_login.id= " +
+//       receivedVariable,
+//     function (err, result) {
+//       if (err) throw err;
+//       //console.log("Result: " + JSON.stringify(result));
+//       res.end(JSON.stringify(result));
+//     }
+//   );
+// });
 
 app.post("/contact", (req, res) => {
   res.status(200);
