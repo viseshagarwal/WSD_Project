@@ -126,7 +126,7 @@ const Signup = () => {
     const newUser = { username, email, password, name, phone_no, address };
     console.log(newUser);
     axios
-      .post("http://localhost:3002/signup", newUser)
+      .post("https://wsd-project-1qvc.onrender.com/signup", newUser)
       .then((response) => {
         //console.log("Response: ", response);
         //console.log(response);

@@ -27,7 +27,7 @@ export const Cart = () => {
       if (window.confirm("Do you want to place an order?") == true) {
         const updateProduct = new Promise(async (resolve, reject) => {
           const updateCart = await axios.post(
-            "http://localhost:3002/checkout",
+            "https://wsd-project-1qvc.onrender.com/checkout",
             {
               user_id,
               cartItems,

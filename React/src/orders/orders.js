@@ -12,7 +12,7 @@ const Orders = () => {
   useEffect(() => {
     // Fetch orders from the backend API
     axios
-      .get("http://localhost:3002/Orders", {
+      .get("https://wsd-project-1qvc.onrender.com/Orders", {
         params: {
           variableName: user_id,
         },

@@ -68,7 +68,9 @@ const Shop = () => {
   // Function to fetch products from the specified API
   const fetchProducts = async () => {
     try {
-      const response = await axios.get("http://localhost:3002/products");
+      const response = await axios.get(
+        "https://wsd-project-1qvc.onrender.com/products"
+      );
 
       if (response.status === 200) {
         const productsData = response.data;

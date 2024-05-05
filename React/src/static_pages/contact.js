@@ -62,7 +62,7 @@ const Contact = () => {
       const message = { name, email, phone_no, subject, message_text };
       console.log(message);
       axios
-        .post("http://localhost:3002/contact", message)
+        .post("https://wsd-project-1qvc.onrender.com/contact", message)
         .then((response) => {
           alert("Message Sent");
           alert("We will contact within 24 hours");
