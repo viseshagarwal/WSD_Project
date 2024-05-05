@@ -311,6 +311,6 @@ app.get("/*", (req, res) => {
 });
 
 // Http connection
-app.listen(port, hostname, () => {
-  console.log(`App listening at http://${hostname}:${port}`);
+app.listen(port, () => {
+  console.log(`App listening at ${port}`);
 });
