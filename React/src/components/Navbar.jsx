@@ -5,12 +5,14 @@ import "./Navbar.css";
 //import logo from "../assets/logo.png";
 import logo from "../assets/Victoria's Fragrance-logos/new_logo_transparent.png";
 import Cookies from "js-cookie";
+import { Analytics } from "@vercel/analytics/react";
 
 export const Navbar = () => {
   //const id = ;
   //console.log(id);
   return (
     <div className="navbar">
+      <Analytics />
       <div className="logo">
         <Link to="/">
           <img src={logo} alt="logo" />
