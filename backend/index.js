@@ -3,8 +3,8 @@ const app = express();
 var cors = require("cors");
 const bodyParser = require("body-parser");
 const mysql = require("mysql");
-require('dotenv').config(); 
-const port = 3002;
+require("dotenv").config();
+//const port = 3002;
 
 const tbl = "user_login";
 const tbl1 = "products";
@@ -20,7 +20,7 @@ const cookieParser = require("cookie-parser");
 var corsOptions = {
   origin: "*",
   methods: "GET",
-  optionsSuccessStatus: 200, 
+  optionsSuccessStatus: 200,
 };
 
 // MySQl connection
@@ -31,14 +31,19 @@ var corsOptions = {
 //   database: db,
 // });
 
-var connection = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_DATABASE,
-  port:  process.env.DB_PORT,
-});
+var host = process.env.DB_HOST;
+var user = process.env.DB_USER;
+var password = process.env.DB_PASSWORD;
+var db = process.env.DB_DATABASE;
+var port = process.env.DB_PORT;
 
+var connection = mysql.createConnection({
+  host: host,
+  user: user,
+  password: password,
+  database: db,
+  port: port,
+});
 
 // Connect with MySql
 connection.connect((err) => {
