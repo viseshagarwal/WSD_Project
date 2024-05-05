@@ -3,11 +3,9 @@ const app = express();
 var cors = require("cors");
 const bodyParser = require("body-parser");
 const mysql = require("mysql");
-
+require('dotenv').config(); 
 const port = 3002;
-const hostname = "localhost";
 
-const db = "react_ecom";
 const tbl = "user_login";
 const tbl1 = "products";
 
@@ -22,16 +20,25 @@ const cookieParser = require("cookie-parser");
 var corsOptions = {
   origin: "*",
   methods: "GET",
-  optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+  optionsSuccessStatus: 200, 
 };
 
 // MySQl connection
+// var connection = mysql.createConnection({
+//   host: "localhost",
+//   user: "root",
+//   password: "",
+//   database: db,
+// });
+
 var connection = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: db,
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_DATABASE,
+  port:  process.env.DB_PORT,
 });
+
 
 // Connect with MySql
 connection.connect((err) => {
